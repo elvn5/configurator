@@ -1,3 +1,13 @@
+:root{
+  font-size: 10px;
+}
+
+@import "common/styles/layout";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+  font-family: "Roboto Light", sans-serif;
+}

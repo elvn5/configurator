@@ -17,7 +17,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "noImplicitThis": false,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "paths" : {
+      "src/*": ["./src/*"]
+    },
     "typeRoots": [
       "./node_modules/@types",
       "./types"
@@ -26,29 +29,6 @@
       "dom",
       "es2017"
     ],
-    "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@containers/*": [
-        "./src/containers/*"
-      ],
-      "@common/*": [
-        "./src/common/*"
-      ],
-      "@store/*": [
-        "./src/store/*"
-      ],
-      "@const/*": [
-        "./src/common/consts/*"
-      ],
-      "@api/*": [
-        "./src/API/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ]
-    },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,

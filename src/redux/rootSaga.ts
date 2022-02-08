@@ -1,7 +1,8 @@
 import { takeEvery, put } from "redux-saga/effects";
+
 import { sagaActions } from "./sagaActions";
 
-export function* fetchDataSaga() {
+function* fetchDataSaga() {
   try {
     yield put({ type: "1" });
   } catch (e) {
@@ -9,6 +10,7 @@ export function* fetchDataSaga() {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function* rootSaga() {
   yield takeEvery(sagaActions.FETCH_DATA_SAGA, fetchDataSaga);
 }

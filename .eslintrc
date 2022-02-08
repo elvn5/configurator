@@ -24,7 +24,7 @@
     "complexity": 0,
     "no-plusplus": 0,
     "no-continue": "off",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "indent": ["error", 2],
     "guard-for-in": "off",
     "linebreak-style": "off",

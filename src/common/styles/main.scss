@@ -1,13 +1,9 @@
 body {
   margin: 0;
-  font-family: $primaryFontRegular, sans-serif;
   font-style: normal;
-  font-size: $bsFontSize;
-  color: $bsTextColor;
+  font-size: 1.4rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $white;
-  letter-spacing: $bsLetterSpacing;
 }
 
 *,

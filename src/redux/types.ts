@@ -9,6 +9,6 @@ type TFrameAndAwning = {
 }
 
 export type {
-TDefaultState,
-TFrameAndAwning,
-}
+  TDefaultState,
+  TFrameAndAwning,
+};

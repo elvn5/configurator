@@ -1,5 +1,6 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {TFrameAndAwning} from "../types";
+import { createSlice } from "@reduxjs/toolkit";
+
+import { TFrameAndAwning } from "../types";
 
 const initialState:TFrameAndAwning = {
   frameAndAwning: {
@@ -7,7 +8,7 @@ const initialState:TFrameAndAwning = {
     error: null,
     loading: false,
   }
-}
+};
 
 const frameAndAwning = createSlice({
   name: 'frameAndAwning',
@@ -15,10 +16,10 @@ const frameAndAwning = createSlice({
   reducers: {
 
   }
-})
+});
 
-const frameAndAwningReducer = frameAndAwning.reducer
+const frameAndAwningReducer = frameAndAwning.reducer;
 
 export {
   frameAndAwningReducer
-}
+};
