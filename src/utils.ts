@@ -12,5 +12,5 @@ function fetchGet<T>(url:string, params?:Record<string, string>):Promise<T>{
 }
 
 export {
-  fetchGet
+  fetchGet,
 };

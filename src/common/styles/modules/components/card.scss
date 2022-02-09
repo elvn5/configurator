@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   max-width: 29rem;
   max-height: 66.8rem;
   border: 1px solid $gray-2;
@@ -6,4 +7,41 @@
   margin-right: 2rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
+
+  &__list {
+    li {
+      display: flex;
+      span {
+        margin: 0 1rem 0 0;
+      }
+    }
+  }
+
+  &__colors {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin: 2rem 0;
+    cursor: pointer;
+
+    &-selected {
+      @extend .card__colors;
+      border: 1px solid $black !important;
+    }
+  }
+
+  &__details {
+    position: absolute;
+    height: 85%;
+    width: 90%;
+    background: $white;
+    transform: translateY(-100%);
+    transition: transform 1s;
+
+  }
+  &__details_active {
+    transform: translateY(100%);
+    transition: transform 1s;
+    opacity: 0;
+  }
 }
