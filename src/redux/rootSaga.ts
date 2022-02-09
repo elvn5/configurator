@@ -1,16 +1,19 @@
-import { takeEvery, put } from "redux-saga/effects";
+import { takeEvery, put, call } from "redux-saga/effects";
+import { getTents } from "src/redux/frameAndAwning/effects";
+import { tentActions } from "src/redux/frameAndAwning/actions";
+import { frameAndAwningActions } from "src/redux/frameAndAwning/frameAndAwning";
 
-import { sagaActions } from "./sagaActions";
 
-function* fetchDataSaga() {
+function* fetchTentSaga():Generator {
+  yield put(frameAndAwningActions.getTentsRequest());
   try {
-    yield put({ type: "1" });
+    const data = yield call(getTents);
+    yield put(frameAndAwningActions.getTentsSuccess(data));
   } catch (e) {
-    yield put({ type: "TODO_FETCH_FAILED" });
+    yield put(frameAndAwningActions.getTentsFailure(e));
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function* rootSaga() {
-  yield takeEvery(sagaActions.FETCH_DATA_SAGA, fetchDataSaga);
+export default function* rootSaga():Generator {
+  yield takeEvery(tentActions.GET_TENTS_REQUEST, fetchTentSaga);
 }

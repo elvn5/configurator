@@ -1,8 +1,9 @@
 .card {
-  min-width: 29rem;
-  min-height: 66.8rem;
+  max-width: 29rem;
+  max-height: 66.8rem;
   border: 1px solid $gray-2;
   display: inline-block;
   margin-right: 2rem;
   margin-bottom: 2rem;
+  padding: 1.5rem;
 }

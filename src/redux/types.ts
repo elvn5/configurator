@@ -1,11 +1,13 @@
+import { IFrameAndAwning } from "src/redux/frameAndAwning/types";
+
 type TDefaultState<T> = {
   data: T | null,
-  error: any;
+  error: string | null;
   loading: boolean;
 }
 
 type TFrameAndAwning = {
-  frameAndAwning: TDefaultState<any>
+  frameAndAwning: TDefaultState<IFrameAndAwning[]>
 }
 
 export type {
