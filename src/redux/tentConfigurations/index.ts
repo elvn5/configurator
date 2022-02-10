@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TTentConfigurationState } from "src/redux/tentConfigurations/types";
+import { EColors } from "src/components/Setup/types";
 
 const initialState:TTentConfigurationState ={
-  configurations: []
+  currentConfiguration: {
+    base: null,
+    selectedColor: EColors["#FFFFFF"],
+  }
 };
 
 const TentConfigurations = createSlice({
@@ -10,7 +14,8 @@ const TentConfigurations = createSlice({
   initialState,
   reducers:{
     addConfiguration: (state, action)=>{
-      state.configurations.push(action.payload);
+      state.currentConfiguration.base = action.payload;
+      state.currentConfiguration.selectedColor = action.payload.selectedColor;
     }
   }
 });

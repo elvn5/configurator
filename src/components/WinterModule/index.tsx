@@ -28,7 +28,6 @@ const WinterModule:VFC = () => {
           img={img}
           color={false}
         />
-
       )}
       {loading && <Loader/>}
     </div>

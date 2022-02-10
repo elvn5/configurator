@@ -60,7 +60,7 @@ const Card:VFC<TCardProps> = (
   const onClickSelectTent = (tentObj:IFrameAndAwning) =>{
     const selectedColor = colorsState.find(element=> element.selected)?.color || "";
 
-    dispatch(addConfiguration(Object.assign({}, tentObj,{ color: selectedColor } )));
+    dispatch(addConfiguration(Object.assign({}, tentObj,{ selectedColor: selectedColor } )));
 
     navigate("/winter-module");
   };

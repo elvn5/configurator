@@ -1,5 +1,16 @@
 .setup {
   max-width: 39.2rem;
-  max-height: 93rem;
+  min-height: 93rem;
   background: $white;
+  box-shadow: 5px 4px 29px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__progress {
+    width: 100%;
+    min-height: 2.6rem;
+    background: linear-gradient(to right, $black 20%,$grayGradient 20% 100%);
+  }
 }
