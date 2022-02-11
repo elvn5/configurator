@@ -1,4 +1,4 @@
-import { IFrameAndAwning } from "src/redux/frameAndAwning/types";
+import { TModulesResponse } from "src/redux/modules/types";
 
 type TDefaultState<T> = {
   data: T | null,
@@ -6,11 +6,11 @@ type TDefaultState<T> = {
   loading: boolean;
 }
 
-type TFrameAndAwning = {
-  frameAndAwning: TDefaultState<IFrameAndAwning[]>
+type TModules = {
+  modules: TDefaultState<TModulesResponse>
 }
 
 export type {
   TDefaultState,
-  TFrameAndAwning,
+  TModules,
 };

@@ -4,8 +4,7 @@ import {
 } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { tentReducer } from "src/redux/tentConfigurations";
-import { frameAndAwningReducer } from "src/redux/frameAndAwning/frameAndAwning";
-import { winterModuleReducer } from "src/redux/winterModule";
+import { modulesReducer } from "src/redux/modules";
 
 import rootSaga from "./rootSaga";
 
@@ -14,9 +13,8 @@ const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
 
 const store = configureStore({
   reducer:{
-    frameAndAwningReducer,
+    modulesReducer,
     tentReducer,
-    winterModuleReducer,
   },
   preloadedState:{
 

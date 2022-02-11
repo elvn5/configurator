@@ -32,7 +32,7 @@
 
   &__details {
     position: absolute;
-    height: 85%;
+    height: 95%;
     width: 90%;
     background: $white;
     transform: translateY(-100%);
@@ -40,6 +40,7 @@
 
   }
   &__details_active {
+    position: absolute;
     transform: translateY(100%);
     transition: transform 1s;
     opacity: 0;

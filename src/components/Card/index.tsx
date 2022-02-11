@@ -3,7 +3,7 @@ import { TCardProps, TColors } from "src/components/Card/types";
 import { colors } from "src/components/Card/constants";
 import cn from "classnames";
 import { useNavigate } from "react-router";
-import { IFrameAndAwning } from "src/redux/frameAndAwning/types";
+import { ITents } from "src/redux/modules/types";
 import { useDispatch } from "react-redux";
 import { addConfiguration } from "src/redux/tentConfigurations";
 
@@ -57,7 +57,7 @@ const Card:VFC<TCardProps> = (
     border: colorObj.color === colors[2].color ? "1px solid gray" : ""
   });
 
-  const onClickSelectTent = (tentObj:IFrameAndAwning) =>{
+  const onClickSelectTent = (tentObj:ITents) =>{
     const selectedColor = colorsState.find(element=> element.selected)?.color || "";
 
     dispatch(addConfiguration(Object.assign({}, tentObj,{ selectedColor: selectedColor } )));

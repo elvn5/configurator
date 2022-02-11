@@ -1,9 +1,9 @@
-import { IFrameAndAwning } from "src/redux/frameAndAwning/types";
+import { ITents } from "src/redux/modules/types";
 import { EColors } from "src/components/Setup/types";
 
 type TTentConfigurationState = {
   currentConfiguration: {
-    base: IFrameAndAwning | null;
+    base: ITents | null;
     selectedColor: EColors,
   }
 }

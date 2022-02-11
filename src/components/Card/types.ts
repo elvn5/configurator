@@ -1,10 +1,10 @@
-import { IFrameAndAwning } from "src/redux/frameAndAwning/types";
+import { ITents } from "src/redux/modules/types";
 
 type TGeneralCardProps = {
   color: boolean;
 }
 
-type TCardProps = TGeneralCardProps  & IFrameAndAwning
+type TCardProps = TGeneralCardProps  & ITents
 
 type TColors = {
   color: string,
