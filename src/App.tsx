@@ -8,6 +8,7 @@ import CurtainsPage from "src/pages/curtainsPage";
 import WindowsPage from "src/pages/WindowsPage";
 import { ERoutes } from "src/constants/types";
 import RoofWindowsPage from "src/pages/RoofWindowsPage";
+import FinalPage from "src/pages/finalPage";
 
 function App(): JSX.Element {
   const { currentConfiguration: { base } } = useSelector(selectCurrentConfiguration);
@@ -27,6 +28,7 @@ function App(): JSX.Element {
       <Route path={ERoutes.CURTAINS} element={<CurtainsPage/>}/>
       <Route path={ERoutes.WINDOWS} element={<WindowsPage/>}/>
       <Route path={ERoutes.ROOF_WINDOWS} element={<RoofWindowsPage/>}/>
+      <Route path={ERoutes.FINAL} element={<FinalPage/>}/>
     </Routes>
   );
 }

@@ -1,5 +1,5 @@
 
-function getColor(color:string):string {
+function getColor(color:string | undefined):string {
   switch (color){
   case "#FFFFFF":
     return "Белый";
@@ -11,6 +11,8 @@ function getColor(color:string):string {
     return "Серый";
   case "#EDBE47":
     return "Желтый";
+  case "#FFD2A8":
+    return "Бежевый";
   default:
     return "";
   }

@@ -1,7 +1,8 @@
-import React, { useState, VFC } from "react";
+import React, { useMemo, useState, VFC } from "react";
 import { TCardProps, TColors } from "src/components/Card/types";
 import { colors } from "src/components/Card/constants";
 import cn from "classnames";
+import { getColor } from "src/components/Setup/utils";
 
 const Card:VFC<TCardProps> = (
   {
@@ -19,6 +20,8 @@ const Card:VFC<TCardProps> = (
     onClickSelectModule,
     description,
     title,
+    size,
+    type,
   }
 ) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
@@ -37,6 +40,15 @@ const Card:VFC<TCardProps> = (
   const onClickShowDetails = () => {
     setShowDetails(!showDetails);
   };
+
+  const selectedColor = useMemo(()=>{
+    const selected = colorsState.find(color=>color.selected);
+    if(selected){
+      return getColor(selected.color);
+    }
+    return [];
+  },
+  [colorsState]);
 
   const onClickColor = (selectedColor:TColors, index:number) =>{
     setColorsState(old=>{
@@ -65,7 +77,7 @@ const Card:VFC<TCardProps> = (
       {tentSize && <li className="text-3xl my-2"><span>Тент:</span> {tentSize}</li>}
       {karkas &&<li className="text-3xl my-2"><span>Каркас:</span> {karkas}</li>}
       {price && <li className="text-3xl my-2"><span>Цена:</span> {price}</li>}
-      {color && <li className="text-3xl my-2"><span>Цвет:</span> Белый</li>}
+      {color && <li className="text-3xl my-2"><span>Цвет:</span> {selectedColor}</li>}
       {color && <li className="flex justify-between">
 
         {colors.map((colorObj, index) =>
@@ -83,19 +95,20 @@ const Card:VFC<TCardProps> = (
 
       <li className="flex flex-col">
         <button
-          onClick={()=>onClickSelectModule(
-            {
-              specifications,
-              karkas,
-              tentSize,
-              material,
-              colorPrice,
-              price,
-              id,
-              binding,
-              img,
-              title
-            }, colorsState)}
+          onClick={()=>onClickSelectModule({
+            specifications,
+            karkas,
+            tentSize,
+            material,
+            colorPrice,
+            price,
+            id,
+            binding,
+            img,
+            title,
+            size,
+            type,
+          }, colorsState)}
           className="button__base">
           Выбрать
         </button>
@@ -116,7 +129,7 @@ const Card:VFC<TCardProps> = (
         </button>
         <div className="text-4xl my-8"><b>Характеристики:</b> {specifications}</div>
         <div className="text-4xl my-8"><b>Материал:</b> {material}</div>
-        <div className="text-4xl my-8"><b>Цвет:</b> Белый</div>
+        <div className="text-4xl my-8"><b>Цвет:</b> {selectedColor}</div>
         <div className="text-4xl my-8"><b>Крепление:</b> {binding}</div>
       </div>
     }

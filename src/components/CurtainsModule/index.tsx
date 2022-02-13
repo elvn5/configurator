@@ -5,7 +5,7 @@ import Card from "src/components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModules } from "src/redux/modules/selectors";
 import { setCurtainsModule } from "src/redux/tentConfigurations";
-import { ITents } from "src/redux/modules/types";
+import { ICard } from "src/redux/modules/types";
 import { useNavigate } from "react-router";
 import { ERoutes } from "src/constants/types";
 
@@ -14,7 +14,7 @@ const CurtainsModule:VFC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const selectCurtains = (args:ITents) =>{
+  const selectCurtains = (args:ICard) =>{
     dispatch(setCurtainsModule(
       {
         price: Number(args.price),

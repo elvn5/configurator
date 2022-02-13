@@ -4,7 +4,7 @@ enum ERoutes {
   CURTAINS = "/curtains",
   WINDOWS = "/windows",
   ROOF_WINDOWS = "/roof-windows",
-  FINAL = "final",
+  FINAL = "/final",
 }
 
 export {

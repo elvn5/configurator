@@ -5,7 +5,7 @@ import Setup from "src/components/Setup";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModules } from "src/redux/modules/selectors";
 import { useNavigate } from "react-router";
-import { ITents } from "src/redux/modules/types";
+import { ICard } from "src/redux/modules/types";
 import { setWindowsModule } from "src/redux/tentConfigurations";
 import { ERoutes } from "src/constants/types";
 
@@ -14,9 +14,14 @@ const WindowsModule:VFC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const selectInnerWindows = (args:ITents) => {
-    if(args.price){
-      dispatch(setWindowsModule(args.price));
+  const selectInnerWindows = ({ price, size, type }:ICard) => {
+    if(price && size && type){
+      dispatch(setWindowsModule({
+        price: price,
+        size: size,
+        count: 4,
+        type: type,
+      }));
     }
 
     navigate(ERoutes.ROOF_WINDOWS);
@@ -29,9 +34,10 @@ const WindowsModule:VFC = () => {
         <Card
           key={window.price + index}
           img={window.img}
-          title={window.type}
+          type={window.type}
           color={false}
           price={window.price}
+          size={window.size}
           onClickSelectModule={selectInnerWindows}
           withDetails={true}/>
       )}

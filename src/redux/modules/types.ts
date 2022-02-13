@@ -4,7 +4,7 @@ interface BaseModule {
   img: string;
 }
 
-interface ITents {
+interface ICard {
   binding?: string;
   karkas?: string;
   material?: string;
@@ -15,6 +15,8 @@ interface ITents {
   img?: string;
   colorPrice?: number;
   title?: string;
+  size?: string;
+  type?: string;
 }
 
 interface IWinterModules extends BaseModule {
@@ -36,7 +38,7 @@ interface ICurtains {
 }
 
 type TModulesResponse = {
-  tents: ITents[],
+  tents: ICard[],
   winterModule: IWinterModules[],
   windows: IWindows[],
   roofWindows: IWindows[],
@@ -45,6 +47,6 @@ type TModulesResponse = {
 }
 
 export type {
-  ITents,
+  ICard,
   TModulesResponse,
 };

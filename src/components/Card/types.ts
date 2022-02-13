@@ -1,4 +1,4 @@
-import { ITents } from "src/redux/modules/types";
+import { ICard } from "src/redux/modules/types";
 
 type TGeneralCardProps = {
   color: boolean;
@@ -6,9 +6,11 @@ type TGeneralCardProps = {
   withDetails: boolean;
   title?: string;
   description?: string;
+  size?: string;
+  type?: string;
 }
 
-type TCardProps = TGeneralCardProps  & ITents
+type TCardProps = TGeneralCardProps  & ICard
 
 type TColors = {
   color: string,
