@@ -5,6 +5,23 @@ type TTentConfigurationState = {
   currentConfiguration: {
     base: ITents | null;
     selectedColor: EColors,
+    winterModulePrice: number | null;
+    curtainsModule: {
+      price: number | null;
+      name: string | null;
+    },
+    windows: {
+      type: string | null;
+      size: string | null;
+      count: number | null;
+      price: number | null;
+    };
+    roofWindows: {
+      type: string | null;
+      size: string | null;
+      count: number | null;
+      price: number | null;
+    }
   }
 }
 

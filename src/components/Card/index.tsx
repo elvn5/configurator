@@ -2,10 +2,6 @@ import React, { useState, VFC } from "react";
 import { TCardProps, TColors } from "src/components/Card/types";
 import { colors } from "src/components/Card/constants";
 import cn from "classnames";
-import { useNavigate } from "react-router";
-import { ITents } from "src/redux/modules/types";
-import { useDispatch } from "react-redux";
-import { addConfiguration } from "src/redux/tentConfigurations";
 
 const Card:VFC<TCardProps> = (
   {
@@ -18,14 +14,15 @@ const Card:VFC<TCardProps> = (
     price,
     colorPrice,
     binding,
-    color = false
+    color = false,
+    withDetails = false,
+    onClickSelectModule,
+    description,
+    title,
   }
 ) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [colorsState, setColorsState] = useState<Array<TColors>>(colors);
-  const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const showDetailsCn = cn({
     "card__details": showDetails,
@@ -37,7 +34,7 @@ const Card:VFC<TCardProps> = (
     "card__colors-selected": colorsState[index].selected
   });
 
-  const onClickShowDetails = () =>{
+  const onClickShowDetails = () => {
     setShowDetails(!showDetails);
   };
 
@@ -57,22 +54,20 @@ const Card:VFC<TCardProps> = (
     border: colorObj.color === colors[2].color ? "1px solid gray" : ""
   });
 
-  const onClickSelectTent = (tentObj:ITents) =>{
-    const selectedColor = colorsState.find(element=> element.selected)?.color || "";
-
-    dispatch(addConfiguration(Object.assign({}, tentObj,{ selectedColor: selectedColor } )));
-
-    navigate("/winter-module");
-  };
-
   return <div className="card">
     <img src={img} width={260} height={260} alt="" />
+
+    {title && <h2>{title}</h2> }
+    {description && <p>{description}</p>}
+    {price && <p>{price}</p>}
+
     <ul className="card__list">
       {tentSize && <li className="text-3xl my-2"><span>Тент:</span> {tentSize}</li>}
       {karkas &&<li className="text-3xl my-2"><span>Каркас:</span> {karkas}</li>}
       {price && <li className="text-3xl my-2"><span>Цена:</span> {price}</li>}
       {color && <li className="text-3xl my-2"><span>Цвет:</span> Белый</li>}
       {color && <li className="flex justify-between">
+
         {colors.map((colorObj, index) =>
           <div
             className={selectedCnColor(index)}
@@ -85,9 +80,10 @@ const Card:VFC<TCardProps> = (
       {color && <li className="justify-center">
         + {colorPrice} руб
       </li>}
+
       <li className="flex flex-col">
         <button
-          onClick={()=>onClickSelectTent(
+          onClick={()=>onClickSelectModule(
             {
               specifications,
               karkas,
@@ -98,26 +94,33 @@ const Card:VFC<TCardProps> = (
               id,
               binding,
               img,
-            })}
+              title
+            }, colorsState)}
           className="button__base">
           Выбрать
         </button>
-        <button className="button__default" onClick={onClickShowDetails}>
-          Подробнее
-        </button>
+
+        {withDetails &&
+          <button className="button__default" onClick={onClickShowDetails}>
+            Подробнее
+          </button>}
+
       </li>
     </ul>
-    <div className={showDetailsCn}>
-      <button
-        className="flex justify-end w-11/12 text-4xl"
-        onClick={onClickShowDetails}>
-        &#x2715;
-      </button>
-      <div className="text-4xl my-8"><b>Характеристики:</b> {specifications}</div>
-      <div className="text-4xl my-8"><b>Материал:</b> {material}</div>
-      <div className="text-4xl my-8"><b>Цвет:</b> Белый</div>
-      <div className="text-4xl my-8"><b>Крепление:</b> {binding}</div>
-    </div>
+    {withDetails &&
+      <div className={showDetailsCn}>
+        <button
+          className="flex justify-end w-11/12 text-4xl"
+          onClick={onClickShowDetails}>
+          &#x2715;
+        </button>
+        <div className="text-4xl my-8"><b>Характеристики:</b> {specifications}</div>
+        <div className="text-4xl my-8"><b>Материал:</b> {material}</div>
+        <div className="text-4xl my-8"><b>Цвет:</b> Белый</div>
+        <div className="text-4xl my-8"><b>Крепление:</b> {binding}</div>
+      </div>
+    }
+
   </div>;
 };
 

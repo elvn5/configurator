@@ -14,6 +14,7 @@ interface ITents {
   id?: number;
   img?: string;
   colorPrice?: number;
+  title?: string;
 }
 
 interface IWinterModules extends BaseModule {
@@ -31,17 +32,19 @@ interface ICurtains {
   material: string;
   price: number;
   title: string;
+  img: string;
 }
 
 type TModulesResponse = {
   tents: ITents[],
   winterModule: IWinterModules[],
   windows: IWindows[],
-  innerWindows: IWindows[],
+  roofWindows: IWindows[],
   curtains: ICurtains[],
+
 }
 
 export type {
   ITents,
-  TModulesResponse
+  TModulesResponse,
 };

@@ -7,6 +7,13 @@ enum EColors {
   "#EDBE47" = "Желтый",
 }
 
+interface ISetupProps {
+  progress: string;
+}
+
 export {
-  EColors
+  EColors,
 };
+
+export type { ISetupProps };
+
