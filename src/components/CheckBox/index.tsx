@@ -8,13 +8,15 @@ const Checkbox: VFC<CheckboxProps> = ({
   onChange,
 }) => (
   <label className="checkbox">
-    {label && <div>{label}</div>}
-    <input
+    {[1,2,3,4,5,6].map(inp=><input
+      key={inp}
       name={name}
       type="checkbox"
       checked={checked}
       onChange={onChange}
-    />
+    />)}
+    {label && <div>{label}</div>}
+
     <span className="checkmark"/>
   </label>
 );

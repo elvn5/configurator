@@ -1,0 +1,41 @@
+.final__config {
+  width: 45%;
+
+  &-price {
+    div, b {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0;
+      font-size: 2rem;
+    }
+  }
+
+  &-module_count {
+    font-size: 2rem;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-total {
+    font-size: 2rem;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.final__config-title {
+  font-size: 2.8rem !important;
+  font-weight: bold;
+}
+
+.config {
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    border-bottom: 1px solid $gray-2;
+    padding: 1rem 0;
+  }
+}

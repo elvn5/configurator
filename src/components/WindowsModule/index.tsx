@@ -36,10 +36,12 @@ const WindowsModule:VFC = () => {
           img={window.img}
           type={window.type}
           color={false}
+          withPrice={true}
           price={window.price}
           size={window.size}
           onClickSelectModule={selectInnerWindows}
-          withDetails={true}/>
+          withDetails={false}
+        />
       )}
     </div>
     <div className="col-span-4 my-8">

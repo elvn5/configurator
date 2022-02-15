@@ -35,10 +35,10 @@ const CurtainsModule:VFC = () => {
             description={curtain.description}
             title={curtain.title}
             price={curtain.price}
+            withPrice={true}
             color={false}
             onClickSelectModule={selectCurtains}
             withDetails={true}/>)}
-
       </div>
       <div className="col-span-4 my-8">
         <Setup progress="40"/>

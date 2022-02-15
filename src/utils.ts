@@ -8,9 +8,18 @@ function fetchGet<T>(url:string, params?:Record<string, string>):Promise<T>{
       throw new Error(res.statusText);
     }
     return res.json();
-  }).then(data=>data.data);
+  }).then(({ data })=> data);
+}
+
+function toLocaleString(arg:number | string):string {
+  if(!arg){
+    return "";
+  }
+  const regex = /,/i;
+  return String(arg.toLocaleString()).replace(regex, " ");
 }
 
 export {
   fetchGet,
+  toLocaleString
 };

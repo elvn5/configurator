@@ -8,6 +8,7 @@ type TGeneralCardProps = {
   description?: string;
   size?: string;
   type?: string;
+  withPrice?: boolean;
 }
 
 type TCardProps = TGeneralCardProps  & ICard

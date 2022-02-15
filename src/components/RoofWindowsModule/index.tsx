@@ -30,6 +30,7 @@ const RoofWindowsModule:VFC = () => {
             img={window.img}
             title={window.type}
             color={false}
+            type={window.type}
             price={window.price}
             onClickSelectModule={selectRoofWindows}
             withDetails={true}/>

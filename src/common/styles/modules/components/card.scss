@@ -45,4 +45,51 @@
     transition: transform 1s;
     opacity: 0;
   }
+
+  &__title {
+    color: $black;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-weight: bold;
+  }
+
+  &__p-desc {
+    margin: 2rem 0;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  &__p-price {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  &__windows-type {
+    font-size: 1.8rem;
+    margin-top: 0.6rem;
+    text-align: center;
+  }
+
+  &__windows-size {
+    font-size: 1.6rem;
+    margin: 0.6rem;
+    text-align: center;
+  }
+
+  &__checkbox {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 15rem;
+
+  }
+
+  &__checkbox-element {
+    width: 5rem;
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $gray-2;
+  }
 }

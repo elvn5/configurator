@@ -3,6 +3,7 @@ import { TCardProps, TColors } from "src/components/Card/types";
 import { colors } from "src/components/Card/constants";
 import cn from "classnames";
 import { getColor } from "src/components/Setup/utils";
+import { toLocaleString } from "src/utils";
 
 const Card:VFC<TCardProps> = (
   {
@@ -22,6 +23,7 @@ const Card:VFC<TCardProps> = (
     title,
     size,
     type,
+    withPrice = false
   }
 ) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
@@ -68,15 +70,24 @@ const Card:VFC<TCardProps> = (
 
   return <div className="card">
     <img src={img} width={260} height={260} alt="" />
-
-    {title && <h2>{title}</h2> }
-    {description && <p>{description}</p>}
-    {price && <p>{price}</p>}
+    {type && <h2 className="card__windows-type">{type}</h2>}
+    {size && <p className="card__windows-size">{size}</p>}
+    {title && <h2 className="card__title">{title}</h2> }
+    {description && <p className="card__p-desc">{description}</p>}
+    {price && withPrice && !type && <p className="card__p-price">{toLocaleString(price)} руб</p>}
+    {price && withPrice && type && <p className="card__p-price">{toLocaleString(price)} руб шт</p>}
+    {type && <div className="card__checkbox">
+      {["Л1", "Л2", "Л3", "П1", "П2", "П3"].map(type => <div
+        className="card__checkbox-element"
+        key={type}>
+        {type}
+      </div>)}
+    </div>}
 
     <ul className="card__list">
       {tentSize && <li className="text-3xl my-2"><span>Тент:</span> {tentSize}</li>}
       {karkas &&<li className="text-3xl my-2"><span>Каркас:</span> {karkas}</li>}
-      {price && <li className="text-3xl my-2"><span>Цена:</span> {price}</li>}
+      {price && !withPrice && <li className="text-3xl my-2"><span>Цена:</span> {price}</li>}
       {color && <li className="text-3xl my-2"><span>Цвет:</span> {selectedColor}</li>}
       {color && <li className="flex justify-between">
 

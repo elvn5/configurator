@@ -2,4 +2,18 @@
   display: flex;
   justify-content: space-between;
   max-width: 1200px !important;
+
+  &__plus {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid $gray-1;
+  }
+
+  &__plus {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid $gray-1;
+  }
 }

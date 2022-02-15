@@ -1,13 +1,13 @@
 import React, { VFC } from "react";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import Setup from "src/components/Setup";
 import Card from "src/components/Card";
 import { selectModules } from "src/redux/modules/selectors";
 import { selectCurrentBaseConfiguration } from "src/redux/tentConfigurations/selectors";
-import Title from "src/components/Title";
-import { setWinterModule } from "src/redux/tentConfigurations";
+import Setup from "src/components/Setup";
 import { ICard } from "src/redux/modules/types";
-import { useNavigate } from "react-router";
+import { setWinterModule } from "src/redux/tentConfigurations";
+import Title from "src/components/Title";
 import { ERoutes } from "src/constants/types";
 
 const WinterModule:VFC = () => {
