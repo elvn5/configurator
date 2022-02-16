@@ -3,7 +3,12 @@ import { useEffect } from "react";
 
 const useScrollIntoView = ():void =>{
   useEffect(()=>{
-    document.body.scrollIntoView(true);
+    const $header = document.querySelector("#header");
+    if($header) {
+      $header.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   }, []);
 };
 

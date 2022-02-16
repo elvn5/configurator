@@ -1,0 +1,13 @@
+.footer {
+  margin-bottom: 2rem;
+
+  &__without-module {
+    color: $gray-1;
+    border: 1px solid $gray-1;
+  }
+
+  &__back {
+    color: $black;
+    border: 1px solid $gray-1;
+  }
+}

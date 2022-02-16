@@ -12,6 +12,7 @@ import { useNavigate } from "react-router";
 import { TColors } from "src/components/Card/types";
 import Title from "src/components/Title";
 import { ERoutes } from "src/constants/types";
+import Footer from "src/components/Footer";
 
 
 const Main:FC = ( ) => {
@@ -33,8 +34,8 @@ const Main:FC = ( ) => {
   };
 
   return (
-    <MainLayout>
-      <Title title={"1. Выберите каркас и тент."}/>
+    <MainLayout footer={<Footer/>}>
+      <Title title="1. Выберите каркас и тент."/>
       <div className="flex flex-wrap main">
         {data && !loading && data.tents?.map(props=>
           <Card

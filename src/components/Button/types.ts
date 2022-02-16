@@ -1,7 +1,8 @@
 interface IButtonProps {
   disabled: boolean;
-  text: string;
+  text?: string;
   className?: string;
+  onClick?: () => void;
 }
 
 export type {

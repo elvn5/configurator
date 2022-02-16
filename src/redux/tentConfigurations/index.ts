@@ -34,14 +34,24 @@ const TentConfigurations = createSlice({
       state.currentConfiguration.base = action.payload;
       state.currentConfiguration.selectedColor = action.payload.selectedColor;
     },
-    setWinterModule: (state, action: PayloadAction<number>) => {
+    setWinterModule: (state, action: PayloadAction<number | null>) => {
       state.currentConfiguration.winterModulePrice = action.payload;
     },
-    setCurtainsModule: (state, action:PayloadAction<{name: string, price: number}>) => {
-      state.currentConfiguration.curtainsModule.name = action.payload.name;
-      state.currentConfiguration.curtainsModule.price = action.payload.price;
+    setCurtainsModule: (state, action:PayloadAction<{name: string, price: number} | null>) => {
+      if( action.payload?.name && action.payload.price) {
+        state.currentConfiguration.curtainsModule.name = action.payload.name;
+        state.currentConfiguration.curtainsModule.price = action.payload.price;
+        return;
+      }
+      state.currentConfiguration.curtainsModule.name = null;
+      state.currentConfiguration.curtainsModule.price = null;
     },
-    setWindowsModule: (state, action) => {
+    setWindowsModule: (state, action:PayloadAction<{
+      price: number,
+      size: string,
+      type: string,
+      count: number
+    }>) => {
       state.currentConfiguration.windows.price = action.payload.price;
       state.currentConfiguration.windows.size = action.payload.size;
       state.currentConfiguration.windows.type = action.payload.type;
