@@ -23,7 +23,8 @@ const Card:VFC<TCardProps> = (
     title,
     size,
     type,
-    withPrice = false
+    withPrice = false,
+    input
   }
 ) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
@@ -72,22 +73,32 @@ const Card:VFC<TCardProps> = (
     <img src={img} width={260} height={260} alt="" />
     {type && <h2 className="card__windows-type">{type}</h2>}
     {size && <p className="card__windows-size">{size}</p>}
-    {title && <h2 className="card__title">{title}</h2> }
+    {title && !type && <h2 className="card__title">{title}</h2> }
     {description && <p className="card__p-desc">{description}</p>}
     {price && withPrice && !type && <p className="card__p-price">{toLocaleString(price)} руб</p>}
     {price && withPrice && type && <p className="card__p-price">{toLocaleString(price)} руб шт</p>}
-    {type && <div className="card__checkbox">
-      {["Л1", "Л2", "Л3", "П1", "П2", "П3"].map(type => <div
-        className="card__checkbox-element"
-        key={type}>
-        {type}
-      </div>)}
-    </div>}
+    {type &&
+      <div className="card__checkbox-container">
+        <div className="card__checkbox-square">
+          {["Л1", "Л2", "Л3"].map(type => <div
+            className="card__checkbox-element-square"
+            key={type}>
+            {type}
+          </div>)}
+        </div>
+        <div className="card__checkbox-rectangle">
+          {["П1", "П2", "П3"].map(type => <div
+            className="card__checkbox"
+            key={type}>
+            {type}
+          </div>)}
+        </div>
+      </div>}
 
     <ul className="card__list">
       {tentSize && <li className="text-3xl my-2"><span>Тент:</span> {tentSize}</li>}
       {karkas &&<li className="text-3xl my-2"><span>Каркас:</span> {karkas}</li>}
-      {price && !withPrice && <li className="text-3xl my-2"><span>Цена:</span> {price}</li>}
+      {price && !withPrice && !type && <li className="text-3xl my-2"><span>Цена:</span> {price}</li>}
       {color && <li className="text-3xl my-2"><span>Цвет:</span> {selectedColor}</li>}
       {color && <li className="flex justify-between">
 
@@ -138,10 +149,26 @@ const Card:VFC<TCardProps> = (
           onClick={onClickShowDetails}>
           &#x2715;
         </button>
-        <div className="text-4xl my-8"><b>Характеристики:</b> {specifications}</div>
-        <div className="text-4xl my-8"><b>Материал:</b> {material}</div>
-        <div className="text-4xl my-8"><b>Цвет:</b> {selectedColor}</div>
-        <div className="text-4xl my-8"><b>Крепление:</b> {binding}</div>
+        <div className="text-4xl my-8">
+          <span className="card__details-label">Характеристики</span>
+          {specifications}
+        </div>
+        <div className="text-4xl my-8">
+          <span className="card__details-label" >Материал: </span >
+          {material}
+        </div>
+        {input && <div className="text-4xl my-8">
+          <span className="card__details-label" >Вход: </span >
+          {input}
+        </div>}
+        {color && <div className="text-4xl my-8">
+          <span className="card__details-label" >Цвет: </span >
+          {selectedColor}
+        </div>}
+        <div className="text-4xl my-8">
+          <span className="card__details-label" >Крепление:</span>
+          {binding}
+        </div>
       </div>
     }
 

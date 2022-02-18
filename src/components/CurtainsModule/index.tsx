@@ -32,13 +32,18 @@ const CurtainsModule:VFC = () => {
           <Card
             key={curtain.title + index}
             img={curtain.img}
+            input={curtain.input}
             description={curtain.description}
             title={curtain.title}
             price={curtain.price}
             withPrice={true}
             color={false}
             onClickSelectModule={selectCurtains}
-            withDetails={true}/>)}
+            withDetails={true}
+            material={curtain.material}
+            binding={curtain.binding}
+          />
+        )}
       </div>
       <div className="col-span-4 my-8">
         <Setup progress="40"/>
