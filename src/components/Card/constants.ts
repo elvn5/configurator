@@ -28,6 +28,42 @@ const colors:Array<TColors> =
     }
   ];
 
+
+const windows = [{
+  label: "Л1",
+  value: 1,
+  type: "left"
+},
+{
+  label: "П1",
+  value: 1,
+  type: "right"
+},
+{
+  label: "Л2",
+  value: 2,
+  type: "left"
+},
+{
+  label: "П2",
+  value: 2,
+  type: "right"
+},
+{
+  label: "Л3",
+  value: 3,
+  type: "left"
+},
+{
+  label: "П3",
+  value: 3,
+  type: "right"
+},
+
+];
+
+
 export {
-  colors
+  colors,
+  windows
 };

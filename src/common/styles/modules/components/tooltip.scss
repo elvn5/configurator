@@ -1,0 +1,11 @@
+.tooltip {
+  position: absolute;
+  min-width: 20rem;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.05);
+  transition: opacity 1s;
+  padding: 1rem;
+  background: $white;
+  p {
+    color: $black;
+  }
+}

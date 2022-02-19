@@ -1,9 +1,10 @@
 import React, { useMemo, useState, VFC } from "react";
-import { TCardProps, TColors } from "src/components/Card/types";
-import { colors } from "src/components/Card/constants";
+import { TCardProps, TColors, TTooltipState, TWindowsState } from "src/components/Card/types";
+import { colors, windows } from "src/components/Card/constants";
 import cn from "classnames";
 import { getColor } from "src/components/Setup/utils";
 import { toLocaleString } from "src/utils";
+import Tooltip from "src/components/Tooltip";
 
 const Card:VFC<TCardProps> = (
   {
@@ -29,6 +30,12 @@ const Card:VFC<TCardProps> = (
 ) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [colorsState, setColorsState] = useState<Array<TColors>>(colors);
+  const [tooltipState, setTooltipState] = useState<TTooltipState>({
+    display: false,
+    x: null,
+    y: null,
+  });
+  const [windowsState, setWindowsState] = useState<Array<TWindowsState>>([]);
 
   const showDetailsCn = cn({
     "card__details": showDetails,
@@ -64,6 +71,37 @@ const Card:VFC<TCardProps> = (
     });
   };
 
+  const onMouseOverTooltip = (event: React.MouseEvent<HTMLDivElement>) =>{
+    setTooltipState({
+      x: event.pageX,
+      y: event.pageY,
+      display: true
+    });
+  };
+
+  const onMouseLeaveTooltip = () => {
+    setTooltipState({
+      x: null,
+      y: null,
+      display: false,
+    });
+  };
+
+  const windowsCount = useMemo(()=>windowsState.reduce((acc, current)=>acc + current.value, 0), [windowsState]);
+
+  const onClickWindow = (window:TWindowsState): void => {
+    if(windowsState.includes(window)){
+      setWindowsState(old => old.filter(element => element !== window));
+      return;
+    }
+
+    const isValid = windowsCount <= 4 && (window.value + windowsCount) <= 4;
+
+    if(isValid) {
+      setWindowsState(old => old.concat(window));
+    }
+  };
+
   const buildStyles = (colorObj:TColors) =>({
     background: colorObj.color,
     border: colorObj.color === colors[2].color ? "1px solid gray" : ""
@@ -79,18 +117,32 @@ const Card:VFC<TCardProps> = (
     {price && withPrice && type && <p className="card__p-price">{toLocaleString(price)} руб шт</p>}
     {type &&
       <div className="card__checkbox-container">
-        <div className="card__checkbox-square">
-          {["Л1", "Л2", "Л3"].map(type => <div
-            className="card__checkbox-element-square"
-            key={type}>
-            {type}
-          </div>)}
+        <div
+          className="card__help"
+          onMouseOver={e=>onMouseOverTooltip(e)}
+          onMouseLeave={onMouseLeaveTooltip}
+        >
+          <div className="card__help-tooltip">
+            ?
+            <Tooltip
+              x={tooltipState.x}
+              y={tooltipState.y}
+              display={tooltipState.display}
+            />
+          </div>
         </div>
-        <div className="card__checkbox-rectangle">
-          {["П1", "П2", "П3"].map(type => <div
-            className="card__checkbox"
-            key={type}>
-            {type}
+
+        <div className="flex flex-wrap justify-center">
+          {windows.map(window => <div
+            className={cn(
+              "card__checkbox",
+              windowsState.includes(window) ? "card__checkbox-selected" : "",
+              type === "Круглые окна" ? "rounded-full" : ""
+            )}
+            onClick={()=>onClickWindow(window)}
+            key={window.label}
+          >
+            {window.label}
           </div>)}
         </div>
       </div>}
@@ -150,7 +202,7 @@ const Card:VFC<TCardProps> = (
           &#x2715;
         </button>
         <div className="text-4xl my-8">
-          <span className="card__details-label">Характеристики</span>
+          <span className="card__details-label">Характеристики: </span>
           {specifications}
         </div>
         <div className="text-4xl my-8">

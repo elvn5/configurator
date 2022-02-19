@@ -19,7 +19,21 @@ type TColors = {
   selected: boolean,
 }
 
+type TTooltipState = {
+  x: number | null,
+  y: number | null,
+  display: boolean;
+}
+
+type TWindowsState = {
+  label: string,
+  value: number,
+  type: string,
+}
+
 export type {
   TCardProps,
-  TColors
+  TColors,
+  TTooltipState,
+  TWindowsState
 };
