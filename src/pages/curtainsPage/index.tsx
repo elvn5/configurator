@@ -7,10 +7,13 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { setCurtainsModule } from "src/redux/tentConfigurations";
 import { ERoutes } from "src/constants/types";
+import Header from "src/components/Header";
+import { useMediaQuery } from "react-responsive";
 
 const CurtainsPage:VFC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useScrollIntoView();
 
@@ -23,7 +26,7 @@ const CurtainsPage:VFC = () => {
       },
     },
     {
-      title: "Без торцевых комплекта",
+      title: "Без торцевых штор",
       className: "footer__without-module",
       onClick: () => {
         dispatch(setCurtainsModule(null));
@@ -33,7 +36,9 @@ const CurtainsPage:VFC = () => {
   ];
 
   return (
-    <MainLayout footer={<Footer buttons={footerButtons}/>}>
+    <MainLayout
+      header={<Header withDescription={false}/>}
+      footer={<Footer buttons={isMobile ? [footerButtons[1]] : footerButtons}/>}>
       <CurtainsModule/>
     </MainLayout>
   );

@@ -9,10 +9,13 @@ import { ICard } from "src/redux/modules/types";
 import { setWinterModule } from "src/redux/tentConfigurations";
 import Title from "src/components/Title";
 import { ERoutes } from "src/constants/types";
+import { useMediaQuery } from "react-responsive";
+import cn from "classnames";
 
 const WinterModule:VFC = () => {
   const { data } = useSelector(selectModules);
   const currentBaseConfig = useSelector(selectCurrentBaseConfiguration);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,8 +27,8 @@ const WinterModule:VFC = () => {
     navigate(ERoutes.CURTAINS);
   };
 
-  return  <div className="grid grid-cols-12">
-    <div className="col-span-8">
+  return  <div className="module grid grid-cols-12">
+    <div className="module__main col-span-8">
       <Title title="2. Выберите зимний модуль"/>
       {data && data.winterModule.map(({
         size,
@@ -47,9 +50,13 @@ const WinterModule:VFC = () => {
       }
       )}
     </div>
-    <div className="col-span-4 my-8">
-      <Setup progress="20"/>
-    </div>
+    {isMobile ?
+      null
+      :
+      (<div className={cn("col-span-4 my-8")}>
+        <Setup/>
+      </div>)}
+
   </div>;
 };
 

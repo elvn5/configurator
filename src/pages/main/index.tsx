@@ -13,6 +13,7 @@ import { TColors } from "src/components/Card/types";
 import Title from "src/components/Title";
 import { ERoutes } from "src/constants/types";
 import Footer from "src/components/Footer";
+import Header from "src/components/Header";
 
 
 const Main:FC = ( ) => {
@@ -34,7 +35,10 @@ const Main:FC = ( ) => {
   };
 
   return (
-    <MainLayout footer={<Footer/>}>
+    <MainLayout
+      header={<Header withDescription={true} withMobileButtons={false}/>}
+      footer={<Footer/>
+      }>
       <Title title="1. Выберите каркас и тент."/>
       <div className="flex flex-wrap main">
         {data && !loading && data.tents?.map(props=>

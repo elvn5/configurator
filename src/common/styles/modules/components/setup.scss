@@ -1,6 +1,6 @@
 .setup {
-  max-width: 39.2rem;
   min-height: 39rem;
+  z-index: 5;
   background: $white;
   box-shadow: 5px 4px 29px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
@@ -11,6 +11,37 @@
   &__progress {
     width: 100%;
     min-height: 2.6rem;
-    //background: linear-gradient(to right, $black 20%,$grayGradient 20% 100%);
   }
+
+  &__total {
+    border-top: 1px solid black;
+    padding-top: 2rem;
+  }
+}
+
+.mobile__setup {
+  position: fixed;
+  overflow: scroll;
+  left: 0;
+  top: 0;
+  transform: translateX(100vh);
+  width: 100vw;
+  height: 100vh;
+  transition: transform 0.8s;
+  padding: 3rem;
+}
+
+.mobile__setup-open {
+  transform: translateX(0vh) !important;
+}
+
+.setup__times {
+  display: flex;
+  justify-content: end;
+  font-size: 5rem;
+  margin-right: 2rem;
+}
+
+.gray {
+  color: $gray-1;
 }

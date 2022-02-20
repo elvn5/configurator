@@ -2,7 +2,7 @@ import { ICard } from "src/redux/modules/types";
 
 type TGeneralCardProps = {
   color: boolean;
-  onClickSelectModule: <T>(args:T, optional?:any) => void;
+  onClickSelectModule: <T>(args:T, colors?:TColors[], windows?:TWindowsState[]) => void;
   withDetails: boolean;
   title?: string;
   description?: string;
@@ -35,5 +35,5 @@ export type {
   TCardProps,
   TColors,
   TTooltipState,
-  TWindowsState
+  TWindowsState,
 };

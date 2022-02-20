@@ -1,3 +1,5 @@
+import React from "react";
+
 enum EColors {
   "#FFD2A8" = "Бежевый",
   "#E5E5E5" = "Серый",
@@ -7,13 +9,14 @@ enum EColors {
   "#EDBE47" = "Желтый",
 }
 
-interface ISetupProps {
-  progress: string;
+type TSetupProps = {
+  isOpen?: boolean,
+  setState?: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export {
   EColors,
 };
+export type { TSetupProps };
 
-export type { ISetupProps };
 

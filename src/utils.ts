@@ -11,9 +11,9 @@ function fetchGet<T>(url:string, params?:Record<string, string>):Promise<T>{
   }).then(({ data })=> data);
 }
 
-function toLocaleString(arg:number | string):string {
+function toLocaleString(arg:number | string | null | undefined):string {
   if(!arg){
-    return "";
+    return "0";
   }
   const regex = /,/i;
   return String(arg.toLocaleString()).replace(regex, " ");

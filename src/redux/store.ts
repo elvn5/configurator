@@ -5,6 +5,7 @@ import {
 import createSagaMiddleware from "redux-saga";
 import { tentReducer } from "src/redux/tentConfigurations";
 import { modulesReducer } from "src/redux/modules";
+import { readyConfigReducer } from "src/redux/readyConfigurations";
 
 import rootSaga from "./rootSaga";
 
@@ -15,6 +16,7 @@ const store = configureStore({
   reducer:{
     modulesReducer,
     tentReducer,
+    readyConfigReducer,
   },
   preloadedState:{
 

@@ -22,6 +22,30 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &-counter {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    svg {
+      cursor: pointer;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    flex-direction: column;
+
+    .order {
+      margin: 1rem 0;
+      background: $black;
+      color: $white;
+    }
+    .add {
+      background: $white;
+      border: 1px solid black;
+    }
+  }
 }
 
 .final__config-title {

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TTentConfigurationState } from "src/redux/tentConfigurations/types";
 import { EColors } from "src/components/Setup/types";
+import { TWindowsState } from "src/components/Card/types";
 
 const initialState:TTentConfigurationState ={
   currentConfiguration: {
@@ -16,14 +17,15 @@ const initialState:TTentConfigurationState ={
       type: null,
       count: null,
       size: null,
+      state: null,
     },
     roofWindows: {
       price: null,
       type: null,
-      count: null,
       size: null,
+      state: null,
     }
-  }
+  },
 };
 
 const TentConfigurations = createSlice({
@@ -50,19 +52,25 @@ const TentConfigurations = createSlice({
       price: number,
       size: string,
       type: string,
-      count: number
+      windows: TWindowsState[],
     }>) => {
       state.currentConfiguration.windows.price = action.payload.price;
       state.currentConfiguration.windows.size = action.payload.size;
       state.currentConfiguration.windows.type = action.payload.type;
-      state.currentConfiguration.windows.count = action.payload.count;
+      state.currentConfiguration.windows.state = action.payload.windows;
     },
-    setRoofWindows: (state, action) => {
+    setRoofWindows: (state, action: PayloadAction<{
+      price: number,
+      size: string,
+      type: string,
+      windows: TWindowsState[],
+    }>) => {
       state.currentConfiguration.roofWindows.price = action.payload.price;
       state.currentConfiguration.roofWindows.size = action.payload.size;
       state.currentConfiguration.roofWindows.type = action.payload.type;
-      state.currentConfiguration.roofWindows.count = action.payload.count;
-    }
+      state.currentConfiguration.roofWindows.state = action.payload.windows;
+    },
+    resetState: () => initialState
   }
 });
 
@@ -73,6 +81,7 @@ const {
   setCurtainsModule,
   setWindowsModule,
   setRoofWindows,
+  resetState
 } = TentConfigurations.actions;
 
 export{
@@ -81,5 +90,6 @@ export{
   setWinterModule,
   setCurtainsModule,
   setWindowsModule,
-  setRoofWindows
+  setRoofWindows,
+  resetState
 };

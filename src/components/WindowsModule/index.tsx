@@ -8,27 +8,33 @@ import { useNavigate } from "react-router";
 import { ICard } from "src/redux/modules/types";
 import { setWindowsModule } from "src/redux/tentConfigurations";
 import { ERoutes } from "src/constants/types";
+import { TColors, TWindowsState } from "src/components/Card/types";
+import cn from "classnames";
+import { useMediaQuery } from "react-responsive";
 
 const WindowsModule:VFC = () => {
   const { data } = useSelector(selectModules);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
-  const selectInnerWindows = ({ price, size, type }:ICard) => {
-    if(price && size && type){
+  const selectInnerWindows = (
+    { price, size, type }:ICard, _colors?:TColors[], windows?:TWindowsState[]
+  ) => {
+    if(price && size && type && windows){
       dispatch(setWindowsModule({
         price: price,
         size: size,
-        count: 4,
         type: type,
+        windows
       }));
     }
 
     navigate(ERoutes.ROOF_WINDOWS);
   };
 
-  return <div className="grid grid-cols-12">
-    <div className="col-span-8">
+  return <div className="module grid grid-cols-12">
+    <div className={cn("module__main col-span-8 ", isMobile && "flex justify-center flex-col")}>
       <Title title="4. Выберите окна в кровле"/>
       {data && data.windows.map((window, index)=>
         <Card
@@ -44,9 +50,9 @@ const WindowsModule:VFC = () => {
         />
       )}
     </div>
-    <div className="col-span-4 my-8">
-      <Setup progress="60"/>
-    </div>
+    {isMobile ? null : <div className="col-span-4 my-8">
+      <Setup/>
+    </div>}
   </div>;
 };
 

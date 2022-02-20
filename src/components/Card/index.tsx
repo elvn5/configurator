@@ -182,8 +182,10 @@ const Card:VFC<TCardProps> = (
             title,
             size,
             type,
-          }, colorsState)}
-          className="button__base">
+          }, colorsState, windowsState)}
+          className="button__base"
+          disabled={(!!type && !windowsState.length)}
+        >
           Выбрать
         </button>
 

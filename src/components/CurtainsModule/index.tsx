@@ -8,11 +8,14 @@ import { setCurtainsModule } from "src/redux/tentConfigurations";
 import { ICard } from "src/redux/modules/types";
 import { useNavigate } from "react-router";
 import { ERoutes } from "src/constants/types";
+import { useMediaQuery } from "react-responsive";
+import cn from "classnames";
 
 const CurtainsModule:VFC = () => {
   const { data } = useSelector(selectModules);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const selectCurtains = (args:ICard) =>{
     dispatch(setCurtainsModule(
@@ -25,8 +28,8 @@ const CurtainsModule:VFC = () => {
     navigate(ERoutes.WINDOWS);
   };
   return(
-    <div className="grid grid-cols-12">
-      <div className="col-span-8">
+    <div className="module grid grid-cols-12">
+      <div className={cn("module__main col-span-8 ", isMobile && "flex justify-center flex-col")}>
         <Title title="3. Выберите торцевые шторы"/>
         {data && data.curtains.map((curtain, index)=>
           <Card
@@ -45,9 +48,9 @@ const CurtainsModule:VFC = () => {
           />
         )}
       </div>
-      <div className="col-span-4 my-8">
-        <Setup progress="40"/>
-      </div>
+      {isMobile ? null : <div className="col-span-4 my-8">
+        <Setup/>
+      </div>}
     </div>
   );
 };

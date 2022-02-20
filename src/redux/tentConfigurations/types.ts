@@ -1,5 +1,6 @@
 import { ICard } from "src/redux/modules/types";
 import { EColors } from "src/components/Setup/types";
+import { TWindowsState } from "src/components/Card/types";
 
 type TTentConfigurationState = {
   currentConfiguration: {
@@ -15,14 +16,15 @@ type TTentConfigurationState = {
       size: string | null;
       count: number | null;
       price: number | null;
+      state: Array<TWindowsState> | null;
     };
     roofWindows: {
       type: string | null;
       size: string | null;
-      count: number | null;
       price: number | null;
+      state: Array<TWindowsState> | null;
     }
-  }
+  },
 }
 
 export type {

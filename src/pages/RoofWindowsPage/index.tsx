@@ -1,13 +1,16 @@
 import React, { VFC } from "react";
+import { useMediaQuery } from "react-responsive";
 import MainLayout from "src/components/MainLayout";
 import RoofWindowsModule from "src/components/RoofWindowsModule";
 import Footer from "src/components/Footer";
 import { useNavigate } from "react-router";
 import { useScrollIntoView } from "src/hooks/useScrollIntoView";
 import { ERoutes } from "src/constants/types";
+import Header from "src/components/Header";
 
 const RoofWindowsPage:VFC = () => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useScrollIntoView();
 
@@ -28,7 +31,9 @@ const RoofWindowsPage:VFC = () => {
     }
   ];
   return (
-    <MainLayout footer={<Footer buttons={footerButtons}/>}>
+    <MainLayout
+      header={<Header withDescription={false}/>}
+      footer={<Footer buttons={isMobile ? [footerButtons[1]] : footerButtons}/>}>
       <RoofWindowsModule/>
     </MainLayout>
   );
