@@ -1,4 +1,24 @@
 .review {
+  img {
+    min-width: 60rem;
+    min-height: 54rem;
+  }
+  @media screen and(max-width: 767px) {
+    display: flex;flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 90%;
+    }
+
+    .review__actions {
+      span {
+        font-size: 2rem;
+        padding-bottom: 2rem;
+      }
+    }
+  }
+
   &__actions {
     display: flex;
     margin: 1rem 0;

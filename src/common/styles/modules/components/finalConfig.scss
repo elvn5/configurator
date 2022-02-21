@@ -1,6 +1,10 @@
 .final__config {
   width: 45%;
 
+  @media screen and(max-width: 767px) {
+    width: 90%;
+  }
+
   &-price {
     div, b {
       display: flex;

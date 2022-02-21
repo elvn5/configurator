@@ -2,6 +2,16 @@
   display: flex;
   justify-content: space-between;
   max-width: 1200px !important;
+  padding: 2rem;
+
+  @media screen and(max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+
+    .final__config-buttons {
+      margin: 2rem 0;
+    }
+  }
 
   &__plus {
     width: 1rem;
